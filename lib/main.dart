@@ -4,10 +4,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:langaw/bgm.dart';
-import 'package:langaw/langaw-game.dart';
+import 'package:langaw/langaw_game.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   Util flameUtil = Util();
   await flameUtil.fullScreen();
   await flameUtil.setOrientation(DeviceOrientation.portraitUp);
@@ -74,5 +76,5 @@ void main() async {
   tapper.onTapDown = game.onTapDown;
   flameUtil.addGestureRecognizer(tapper);
 
-  WidgetsBinding.instance.addObserver(BGMHandler());
+  WidgetsBinding.instance!.addObserver(BGMHandler());
 }
